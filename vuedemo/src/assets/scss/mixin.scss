@@ -1,0 +1,68 @@
+// 设置宽高
+@mixin wh($wid,$hei){
+    width: $wid;
+    height: $hei;
+    display: block;
+}
+
+// 1px边框
+@mixin border1px($direction:'bottom') {
+    position: relative;
+    &::after{
+        content: '';
+        @include wh(200%,1px);
+        transform-origin: left top;
+        transform: scale(0.5);
+        background: $border-color-base;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+@mixin flex($direction:row) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+}
+
+//单行文本省略 
+@mixin aline(){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 文字居中 lineheight中
+@mixin cen($w,$h){
+    width: $w;
+    height: $h;
+    text-align: center;
+    line-height: $h;
+}
+
+//上右下左边距 
+@mixin marginTrbl($t,$r,$b,$l){
+    margin-top: $t;
+    margin-right: $r;
+    margin-bottom: $b;
+    margin-left: $l;
+}
+
+@mixin posTl($pos,$t,$l){
+    position: $pos;
+    top: $t;
+    left: $l;
+}
+
+@mixin posBl($pos,$b,$l){
+    position: $pos;
+    bottom: $b;
+    left: $l;
+}
+
+@mixin flex_wrap($f,$w){
+    display: $f;
+    flex-wrap: $w;
+}

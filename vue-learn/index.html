@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>MVVM</title>
+	<meta name="author" content="PrivateEye">
+	<style>
+		html,
+		body,
+		* {
+			font-size: 12px;
+			margin: 0;
+			padding: 0;
+			font-weight: normal;
+			font-family: "Microsoft YaHei";
+			line-height: 1;
+		}
+
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background: #fff
+		}
+
+		#app {
+			margin: 40px auto;
+			width: 60%;
+		}
+
+		.dd_line {
+			font-size: 16px;
+			cursor: pointer;
+			transition: all .2s linear;
+			text-indent: 5px;
+			line-height: 30px;
+			padding: 5px 10px;
+			position: relative;
+		}
+
+		.dd_line::after {
+			content: '';
+			position: absolute;
+			transform: translateY(-50%);
+			top: 50%;
+			left: 0;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: red;
+		}
+
+		.dd_line:hover {
+			background: #ddd;
+		}
+
+		h1 {
+			font-size: 26px;
+			margin: 50px 0;
+			text-align: center;
+		}
+
+		h3,
+		span {
+			margin: 10px 0;
+			font-size: 16px;
+			line-height: 30px;
+		}
+
+		dl {
+			overflow-y: auto;
+			height: 40vh;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-top: 1px solid #ddd;
+			border-bottom: 1px solid #ddd;
+		}
+
+		input {
+			font-size: 16px;
+		}
+
+		button {
+			padding: 4px;
+			font-size: 14px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<h1 v-bind="title"></h1>
+		<button type="button" v-click="increment(-1)">减少</button>
+		<input type="text" v-model="num">
+		<button type="button" v-click="increment(1)">增加</button>
+		<h3>当前的输入值：<span v-bind="num"></span></h3>
+		<dl>
+			<dd class="dd_line" v-click="clickItem(i, item)" v-for="(i, item) in list">Hello world---第{{i}}项---{{item}}</dd>
+		</dl>
+		<button type="button" v-click="updateArr()">全局更新整个数组</button>
+		<button type="button" v-click="updateArrItem()">局部更新数组中的第2项</button>
+		<button type="button" v-click="pushArr()">数组push变异方法</button>
+		<button type="button" v-click="popArr()">数组pop变异方法</button>
+		<button type="button" v-click="spliceArr()">数组splice变异方法</button>
+	</div>
+</body>
+<script type="text/javascript" src="js/ZVue.js"></script>
+<script>
+	window.onload = function () {
+		const app = new ZVue({
+			el: '#app',
+			data: {
+				title: '原生JS实现MVVM+v-for+v-click+v-model指令解析+变异数组监听',
+				num: 100,
+				list: ['Vue', 'React', 'AngularJS'],
+			},
+			methods: {
+				// 测试双向绑定
+				increment(n) {
+					this.num = (this.num | 0) + (n | 0)
+				},
+				// 测试点击事件获取到点击数组的索引和值
+				clickItem(idx, item) {
+					console.log(`点击了第${idx}项,值是${item}`)
+				},
+				// 测试更新整个数组的字面量
+				updateArr() {
+					this.list = [Math.random(0), Math.random(0), Math.random(0), Math.random(0)]
+				},
+				// 测试局部更新数组的某一项字面量
+				updateArrItem() {
+					this.list[1] = Math.random(0) * 10 + 1
+				},
+				// 测试变异数组的push,pop,splice方法
+				pushArr() {
+					this.list.push(Math.random(0))
+				},
+				popArr() {
+					this.list.pop()
+				},
+				spliceArr() {
+					this.list.splice(1, 1)
+				}
+			}
+		})
+	}
+</script>
+
+</html>

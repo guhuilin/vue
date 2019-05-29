@@ -1,0 +1,74 @@
+<template>
+    <div>
+        <div class="water-group">
+            <div
+                class="water water1"
+                :style="{ 'background': 'url(' + require('@/assets/img/wave.png') + ')'}"
+            ></div>
+            <div
+                class="water water2"
+                :style="{ 'background': 'url(' + require('@/assets/img/wave.png') + ')'}"
+            ></div>
+            <div
+                class="water water3"
+                :style="{ 'background': 'url(' + require('@/assets/img/wave.png') + ')'}"
+            ></div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style lang="scss" scoped>
+.water-group {
+  position: relative;
+  height: 110px;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #ff4444, red);
+}
+.water-group .water {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background-size: 50% 100%;
+}
+.water-group .water1 {
+  top: 20px;
+  left: -100%;
+  opacity: 0.2;
+  animation: water-right 20s infinite linear;
+}
+.water-group .water2 {
+  top: 30px;
+  left: 0;
+  opacity: 0.3;
+  animation: water-left 30s infinite linear;
+}
+.water-group .water3 {
+  top: 45px;
+  left: -100%;
+  animation: water-right 40s infinite linear;
+}
+@keyframes water-right {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(25%) translateZ(0) scaleY(0.85);
+  }
+  100% {
+    transform: translateX(50%) translateZ(0) scaleY(1);
+  }
+}
+@keyframes water-left {
+  from {
+    transform: translate(0%, 0px);
+  }
+  to {
+    transform: translate(-50%, 0px);
+  }
+}
+</style>
