@@ -16,3 +16,6 @@
 
 #### 知识点4  （vuex）
 vue的状态管理,借鉴了redux,与redux派发action不同的是,它运用的是namespaced, 主要用来处理一些大型的项目中的复杂的业务逻辑,数据的传递使用
+
+### 备注
+**vuedemo** 删除了`package.json` `package-lock.json`,本地文件有 (避免github warning,强迫症...)
