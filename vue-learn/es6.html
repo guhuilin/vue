@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ES6</title>
+</head>
+
+<body>
+	<script>
+		// 解构赋值
+		// function allNum() {
+		// 	console.log(arguments.length,'arg')
+		// }
+		const allNum = (...arg) => {
+			let num = arg.reduce((a,b,c,d) => { 
+				if(b in a) {
+					a[b] ++
+				} else {
+					a[b] = 1
+				}
+				return a
+			}, {})
+			return num
+		}
+		console.log(allNum(1,2,3,4,1))
+
+		let {a, b, c = 2} = {a:1,b:2}
+		console.log(a,b,c,'....')
+	
+		let {p: [{ y }, x ] } = {p: [{y: 'world'}] };
+		console.log(y,x)
+
+		let [h, i, j] = ['韩壮', '雷有裕', 'ccc', 444]
+		console.log(h, i, j,'....')
+	</script>
+</body>
+
+</html>
