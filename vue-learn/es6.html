@@ -14,27 +14,191 @@
 		// function allNum() {
 		// 	console.log(arguments.length,'arg')
 		// }
-		const allNum = (...arg) => {
-			let num = arg.reduce((a,b,c,d) => { 
-				if(b in a) {
-					a[b] ++
-				} else {
-					a[b] = 1
-				}
-				return a
-			}, {})
-			return num
-		}
-		console.log(allNum(1,2,3,4,1))
+		// const allNum = (...arg) => {
+		// 	let num = arg.reduce((a, b, c, d) => {
+		// 		if (b in a) {
+		// 			a[b]++
+		// 		} else {
+		// 			a[b] = 1
+		// 		}
+		// 		return a
+		// 	}, {})
+		// 	return num
+		// }
+		// console.log(allNum(1, 2, 3, 4, 1))
 
-		let {a, b, c = 2} = {a:1,b:2}
-		console.log(a,b,c,'....')
-	
-		let {p: [{ y }, x ] } = {p: [{y: 'world'}] };
-		console.log(y,x)
+		// let { a, b, c = 2 } = { a: 1, b: 2 }
+		// console.log(a, b, c, '....')
 
-		let [h, i, j] = ['韩壮', '雷有裕', 'ccc', 444]
-		console.log(h, i, j,'..........')
+		// let { p: [{ y }, x] } = { p: [{ y: 'world' }] };
+		// console.log(y, x)
+
+		// let [h, i, j] = ['韩壮', '雷有裕', 'ccc', 444]
+		// console.log(h, i, j, '..........')
+
+
+		// symbol类型
+		// let symbol1 = Symbol('xxx')
+		// let symbol2 = Symbol('xxx')
+		// console.log(symbol1 == symbol2) // false
+		// console.log(typeof(symbol1))  // Symbol('xxx')
+
+		// let symbol3 = Symbol('key')
+		// let symbol4 = Symbol('key')
+		// let symbolObj = {}
+		// symbolObj[symbol3] = 'xxx';
+		// symbolObj[symbol4] = 'yyy';
+		
+		// console.log(Object.getOwnPropertySymbols(symbolObj)) // [Symbol(key), Symbol(key)]
+		// console.log(Reflect.ownKeys(symbolObj)) // [Symbol(key), Symbol(key)]
+
+		// const COLOR_RED = Symbol('red');
+		// const COLOR_RED1 = Symbol('red');
+		// const COLOR_GREEN = Symbol('green');
+		// const COLOR_BLUE = Symbol('blue');
+
+		// function colorMatch(msg) {
+		// 	this.name = '原因:'
+		// 	this.msg = msg;
+		// }
+
+		// function getColor(color) { 
+		// 	switch(color) {
+		// 		case 'COLOR_RED': {
+		// 			return 'red'
+		// 		}
+		// 		case 'COLOR_RED1': {
+		// 			return 'red'
+		// 		}
+		// 		case 'COLOR_BLUE': {
+		// 			return 'blue'
+		// 		}
+		// 		case 'COLOR_GREEN': {
+		// 			return 'green'
+		// 		}
+		// 		default :
+		// 			throw new colorMatch('找不到这个颜色！')
+		// 	}
+		// }
+
+		// try {
+		// 	var color = 'COLOR_RED'
+		// 	var colorName = getColor(color)
+		// 	console.log(colorName)
+		// } catch (e) {
+		// 	console.log(e.name+e.msg,'......')
+		// }
+
+
+		// // Map & Set
+		// let mapStr = new Map();
+		// let x = 'xxx';
+		// mapStr.set(x,'xxx')
+		// let aaa = 'arr'
+		// // mapStr.set(aaa,()=>{return 111})
+		// // console.log(mapStr.get(aaa)(),'...')
+		// console.log(mapStr.get('xxx') === mapStr.get(x),'...')
+		
+		
+		var zzz = 'zzz';
+		let xxx = (function(){
+			console.log(zzz,'zzz')
+			return 321
+		})()
+		console.log(xxx,'xxx')
+		// new function zzz(a) {
+		// 	console.log(a)
+		// }('aaaa')
+
+		// for(var i = 0;i < 5;i ++) {
+		// 	// console.log(i);
+		// 	// (function(i) {
+		// 		setTimeout(()=> {
+		// 			console.log(i,'2')
+		// 		// },0)
+		// 	},100)
+		// }
+
+		// for(let i = 0;i <= 5;i ++) {
+		// 	(function(){
+		// 		setTimeout(()=> {
+		// 			console.log(i)
+		// 		},500*i)
+		// 	})(i)
+		// }
+
+		// 1. lockedInIndex变量，也可以换成i，因为和外面的i不在一个作用域
+for( var i=0;i<3;i++){
+    (function(i){
+        setTimeout(function(){
+            console.log(i); // 1,2,3
+        }
+        ,300);
+    })(i);
+}
+
+for( var i=0;i<3;i++){
+    setTimeout((function(i){
+        console.log(i); // 1,2,3
+    })(i)
+    ,300);
+}
+
+// 2. 自执行函数不带入参数 
+for( var i=0;i<3;i++){
+    (function(){
+        setTimeout(function(){
+            console.log(i); // 3,3,3
+        }
+        ,300);
+    })();
+}
+
+for( var i=0;i<3;i++){
+    setTimeout((function(){
+        console.log(i); // 1,2,3
+    })()
+    ,300);
+}
+
+// 3. 自执行函数只有实参没有写形参
+for( var i=0;i<3;i++){
+    (function(){
+        setTimeout(function(){
+            console.log(i); // 3,3,3
+        }
+        ,300);
+    })(i);
+}
+
+for( var i=0;i<3;i++){
+    setTimeout((function(){
+        console.log(i); // 1,2,3
+    })(i)
+    ,300);
+}
+
+// 4. 自执行函数只有形参没有写实参，这种情况不行。因为会导致输出 undefined。
+for( var i=0;i<3;i++){
+    (function(i){
+        setTimeout(function(){
+            console.log(i); // undefined,undefined,undefined
+        }
+        ,300);
+    })();
+}
+
+for( var i=0;i<3;i++){
+    setTimeout((function(i){
+        console.log(i); // undefined,undefined,undefined
+    })()
+    ,300);
+}
+
+
+
+
+
 	</script>
 </body>
 
