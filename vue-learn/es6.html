@@ -6,10 +6,44 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>ES6</title>
+	<style>
+		html,body,#wrapper {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		.left>div,.right>div {
+			width: 100vw;
+			height: 50vh;
+			word-wrap: break-word;
+		}
+	</style>
 </head>
 
 <body>
+	<div id="wrapper">
+		<div class="left" style="width: 100%;height: 50%;display:flex;background: rgb(157, 46, 231);">
+			<div>11111111111111111111111111111111111</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+		<div class="right" style="width: 100%;height: 50%;display:flex;background: rgb(255, 208, 0);">
+				<div>4</div>
+				<div>5</div>
+				<div>6</div>
+		</div>
+	</div>
 	<script>
+		let dom = document.querySelectorAll('#wrapper>div')
+		let str = ''
+		for(var i = 0;i < 50;i ++) {
+			str += i
+		}
+		// dom.forEach(item => {
+		// 	item.innerHTML = str
+		// })
+		console.log(dom,str,'...')
 		// 解构赋值
 		// function allNum() {
 		// 	console.log(arguments.length,'arg')
@@ -48,7 +82,7 @@
 		// let symbolObj = {}
 		// symbolObj[symbol3] = 'xxx';
 		// symbolObj[symbol4] = 'yyy';
-		
+
 		// console.log(Object.getOwnPropertySymbols(symbolObj)) // [Symbol(key), Symbol(key)]
 		// console.log(Reflect.ownKeys(symbolObj)) // [Symbol(key), Symbol(key)]
 
@@ -98,8 +132,8 @@
 		// // mapStr.set(aaa,()=>{return 111})
 		// // console.log(mapStr.get(aaa)(),'...')
 		// console.log(mapStr.get('xxx') === mapStr.get(x),'...')
-		
-		
+
+
 		// var zzz = 'zzz';
 		// let xxx = (function(){
 		// 	console.log(zzz,'zzz')
