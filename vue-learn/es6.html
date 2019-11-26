@@ -100,12 +100,12 @@
 		// console.log(mapStr.get('xxx') === mapStr.get(x),'...')
 		
 		
-		var zzz = 'zzz';
-		let xxx = (function(){
-			console.log(zzz,'zzz')
-			return 321
-		})()
-		console.log(xxx,'xxx')
+		// var zzz = 'zzz';
+		// let xxx = (function(){
+		// 	console.log(zzz,'zzz')
+		// 	return 321
+		// })()
+		// console.log(xxx,'xxx')
 		// new function zzz(a) {
 		// 	console.log(a)
 		// }('aaaa')
@@ -128,73 +128,78 @@
 		// }
 
 		// 1. lockedInIndex变量，也可以换成i，因为和外面的i不在一个作用域
-for( var i=0;i<3;i++){
-    (function(i){
-        setTimeout(function(){
-            console.log(i); // 1,2,3
-        }
-        ,300);
-    })(i);
-}
+// for( var i=0;i<3;i++){
+//     (function(i){
+//         setTimeout(function(){
+//             console.log(i); // 1,2,3
+//         },1000*i);
+//     })(i);
+// }
 
-for( var i=0;i<3;i++){
-    setTimeout((function(i){
-        console.log(i); // 1,2,3
-    })(i)
-    ,300);
-}
+// for( var i=0;i<3;i++){
+//     setTimeout((function(i){
+//         console.log(i); // 1,2,3
+//     })(i),1000*i);
+// }
 
 // 2. 自执行函数不带入参数 
-for( var i=0;i<3;i++){
-    (function(){
-        setTimeout(function(){
-            console.log(i); // 3,3,3
-        }
-        ,300);
-    })();
-}
+// for( let i=0;i<3;i++){
+//     (function(){
+//         setTimeout(function(){
+//             console.log(i); // 3,3,3
+//         }
+//         ,300);
+//     })();
+// }
 
-for( var i=0;i<3;i++){
-    setTimeout((function(){
-        console.log(i); // 1,2,3
-    })()
-    ,300);
-}
+// for( var i=0;i<3;i++){
+//     setTimeout((function(){
+//         console.log(i); // 1,2,3
+//     })()
+//     ,300);
+// }
 
 // 3. 自执行函数只有实参没有写形参
-for( var i=0;i<3;i++){
-    (function(){
-        setTimeout(function(){
-            console.log(i); // 3,3,3
-        }
-        ,300);
-    })(i);
-}
+// for( let i=0;i<3;i++){
+//     (function(){
+//         setTimeout(function(){
+//             console.log(i); // 3,3,3
+//         }
+//         ,300*i);
+//     })(i);
+// }
 
-for( var i=0;i<3;i++){
-    setTimeout((function(){
-        console.log(i); // 1,2,3
-    })(i)
-    ,300);
-}
+// for( var i=0;i<3;i++){
+//     setTimeout((function(){
+//         console.log(i); // 1,2,3
+//     })(i)
+//     ,1000);
+// }
 
-// 4. 自执行函数只有形参没有写实参，这种情况不行。因为会导致输出 undefined。
-for( var i=0;i<3;i++){
-    (function(i){
-        setTimeout(function(){
-            console.log(i); // undefined,undefined,undefined
-        }
-        ,300);
-    })();
-}
+// // 4. 自执行函数只有形参没有写实参，这种情况不行。因为会导致输出 undefined。
+// for( let i=0;i<3;i++){
+//     (function(i){
+//         setTimeout(function(){
+//             console.log(i); // undefined,undefined,undefined
+//         }
+//         ,300);
+//     })();
+// }
 
-for( var i=0;i<3;i++){
-    setTimeout((function(i){
-        console.log(i); // undefined,undefined,undefined
-    })()
-    ,300);
-}
+// for( var i=0;i<3;i++){
+//     setTimeout((function(i){
+//         console.log(i); // undefined,undefined,undefined
+//     })()
+//     ,300);
+// }
 
+// var fun = function() {
+// 	console.log(11111)
+// 	// arguments.callee()
+// }
+// (function add(){
+// 	console.log(2222)
+// }())
 
 
 
