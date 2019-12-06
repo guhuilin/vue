@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>有兼容问题（此为谷歌，随时查看变化）</title>
+    <script>
+        var Ajax = {
+            get: function (url, fn) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencode;charset=utf-8');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        fn.call(this, xhr.responseText)
+                    }
+                };
+                xhr.send()
+            },
+        }
+
+        window.addEventListener("beforeunload", function(event){ console.log(1111111)
+            Ajax.get('http://192.168.249.32:6666', getDatas)
+            event.returnValue = '';
+        }, false);
+        function getDatas (val) {
+            let resData = JSON.parse(val);
+            console.log('///', resData);
+        }
+    </script>
+</head>
+
+<body>
+    测试
+</body>
+
+</html>
