@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const map = {
+            a_one: 'a1',
+            b_one: 'b1',
+            c_one: 'c1',
+            d_one: 'd1',
+            a_two: 'a2',
+            b_two: 'b2',
+            c_two: 'c2',
+            a_tree: 'a2',
+            b_tree: 'b2',
+            c_tree: 'c2',
+            o_test: '6465',
+            s_test: 'yyy'
+        }
+        let arr = [];
+        let gulps = [];
+        for (let key in map) {
+            let gulp = key.split('_')[1];
+            if (gulps.indexOf(gulp) == -1) {
+                gulps.push(gulp);
+            }
+        }
+        gulps.forEach(function (e) {
+            let obj = {};
+            for (let key in map) {
+                let name = key.split('_')[0];
+                let gulp = key.split('_')[1];
+                let value = map[key];
+                if (gulp == e) {
+                    obj[name] = value;
+                }
+            }
+            arr.push(obj);
+        });
+        console.log(arr);
+
+
+    </script>
+</body>
+
+</html>
