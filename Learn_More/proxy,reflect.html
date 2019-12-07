@@ -50,17 +50,33 @@
 		// newObj.age.a = 222;
 		// console.log(obj, newObj)
 
-		let exam = {
-			name: 'Tom',
-			age: 24
-		}
-		let proxy = new Proxy(exam, {
-			get(target, propKey, reciver) { console.log(target, propKey, reciver,'..')
-				console.log('getting' + propKey);
+		/* 实例方法 */
+		// get 读取key
+		// let exam = {
+		// 	name: 'Tom',
+		// 	age: 24
+		// }
+		// let proxy = new Proxy(exam, {
+		// 	get(target, propKey, reciver) { console.log(target, propKey, reciver,'..')
+		// 		console.log('getting' + propKey);
+		// 		return target[propKey];
+		// 	}
+		// })
+		// proxy.name
+
+		let proxy = new Proxy({name:'_aaaa'}, {
+			get(target, propKey, receiver) { console.log(propKey)
+				if(propKey[0] === '_') {
+					throw new Error(`Invalid attempt to get private ${propKey}`);
+				}
+				console.log('getting' + propKey + '--' + target[propKey]);
 				return target[propKey];
 			}
 		})
-		proxy.name
+
+		let obj = Object.create(proxy);
+		obj._name
+		
 		
 		
 	</script>
