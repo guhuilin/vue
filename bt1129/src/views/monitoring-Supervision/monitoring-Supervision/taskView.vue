@@ -889,7 +889,7 @@
 
     .workflow {
         border: 1px solid #000000;
-        // height: 50%;
+        height: 300px;
         margin-top: 20px;
     }
 
