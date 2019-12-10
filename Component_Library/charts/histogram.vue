@@ -32,6 +32,13 @@ export default {
   methods: {
     loadEchart(id) {
       this.myChart = Echarts.init(document.getElementById(id))
+
+      let xxx = this.myChart.getDataURL({
+        pixelRatio: 2,
+        backgroundColor: '#fff'
+      });
+      this.$emit('propData', xxx);
+      
       this.myChart.setOption({
         title: {
           text: this.echartObj.title.text

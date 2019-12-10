@@ -62,6 +62,13 @@ export default {
     // 绘制饼状图
     drawPie(id) {
       this.charts = Echarts.init(document.getElementById(id))
+
+      let xxx = this.charts.getDataURL({
+        pixelRatio: 2,
+        backgroundColor: '#fff'
+      });
+      this.$emit('propData', xxx);
+
       this.charts.setOption({
         // backgroundColor: '#12cf96',
         title: {
