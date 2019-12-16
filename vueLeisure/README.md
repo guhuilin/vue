@@ -1,8 +1,15 @@
 ## 前言
-闲暇，学一下新版的vue
+闲暇，学一下新版的vue3.0 + ts
 
 ---
  ##  内容预览
+ 1.   home 主页面（✔）
+ 2.   aboutJs js相关代码段及效果实现（✔）
+ 3.   aboutHtml html布局相关（✔）
+---
+
+---
+ ##  知识点预览
  1.   vue cli3的安装。（✔）
  2.   vue config文件配置（✔）
  3.   项目结构文件搭建（✔）
@@ -14,8 +21,7 @@
  9.   分页的使用（✘）
  10.  重制按钮的分装（✘）
  11.  富文本编译器（✘）
- 
- ---
+---
 
 
 ## 1.VueCLI 3.0
@@ -23,7 +29,7 @@
 
 安装：
 ```
-# 然后我们安装vuecli3.0 npm 或者 yarn都是可以的网上慢的小伙子可以用yarn
+# 然后我们安装vuecli3.0 
 npm install -g @vue/cli
 # OR
 yarn global add @vue/cli
